@@ -1,0 +1,37 @@
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+    doc-expansion: none
+    disable-swagger-default-url: true
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  packages-to-scan: org.example.controller
+  paths-to-match: /**
+
+server:
+  port: 8080
+
+services:
+  order-service:
+    url: http://order-service:8081
+  payment-service:
+    url: http://payments-service:8082
+
+spring:
+  application:
+    name: api-gateway
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: none
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: never
+      enabled: false 
